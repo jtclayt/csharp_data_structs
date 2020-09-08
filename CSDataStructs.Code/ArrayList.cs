@@ -52,6 +52,29 @@ namespace CSDataStructs.Code
             _size++;
         }
 
+        public void InsertAt(int index, T item)
+        {
+            checkOverCapacity();
+            if (index == 0)
+            {
+                InsertFront(item);
+            }
+            else if (index == _size)
+            {
+                InsertBack(item);
+            }
+            else
+            {
+                for (int i = _size; i >= index; i--)
+                {
+                    int fixedIndex = i + _start;
+                    _arr[fixedIndex+1] = _arr[fixedIndex];
+                }
+                _arr[index+_start] = item;
+                _size++;
+            }
+        }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

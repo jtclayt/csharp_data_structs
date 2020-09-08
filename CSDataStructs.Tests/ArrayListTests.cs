@@ -102,6 +102,19 @@ namespace CSDataStructs.Tests
             }
         }
 
+        [Fact]
+        public void TestInsertAt()
+        {
+            list.InsertAt(0, 1);
+            Assert.Equal(1, list.Get(0));
+            Assert.Equal(1, list.Size);
+            list.InsertAt(1, 3);
+            Assert.Equal(3, list.Get(1));
+            list.InsertAt(1, 2);
+            Assert.Equal(2, list.Get(1));
+            Assert.Equal(3, list.Size);
+        }
+
         private void buildBigOrderedList(string side)
         {
             for (int i = 0; i < 100; i++)
