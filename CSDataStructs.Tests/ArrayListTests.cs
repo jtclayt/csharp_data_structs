@@ -85,6 +85,7 @@ namespace CSDataStructs.Tests
         [Fact]
         public void TestGetOutOfRange()
         {
+            Assert.Throws<IndexOutOfRangeException>(() => list.Get(0));
             list.InsertBack(1);
             list.InsertBack(2);
             Assert.Throws<IndexOutOfRangeException>(() => list.Get(-1));
@@ -113,6 +114,105 @@ namespace CSDataStructs.Tests
             list.InsertAt(1, 2);
             Assert.Equal(2, list.Get(1));
             Assert.Equal(3, list.Size);
+        }
+
+        [Fact]
+        public void TestInsertAtOutOfBounds()
+        {
+            Assert.Throws<IndexOutOfRangeException>(() => list.InsertAt(1, 1));
+            Assert.Throws<IndexOutOfRangeException>(() => list.InsertAt(-4, 1));
+        }
+
+        [Fact]
+        public void TestRemoveFrontFromEmpty()
+        {
+            Assert.Throws<IndexOutOfRangeException>(() => list.RemoveFront());
+        }
+
+        [Fact]
+        public void TestRemoveFront()
+        {
+            list.InsertFront(1);
+            Assert.Equal(1, list.RemoveFront());
+            Assert.Equal(0, list.Size);
+            list.InsertFront(2);
+            list.InsertBack(3);
+            Assert.Equal(2, list.RemoveFront());
+            Assert.Equal(1, list.Size);
+        }
+
+        [Fact]
+        public void TestRemoveFrontMany()
+        {
+            buildBigOrderedList("back");
+            for (int i = 0; i < 100; i++)
+            {
+                Assert.Equal(i, list.RemoveFront());
+            }
+        }
+
+        [Fact]
+        public void TestRemoveBackFromEmpty()
+        {
+            Assert.Throws<IndexOutOfRangeException>(() => list.RemoveBack());
+        }
+
+        [Fact]
+        public void TestRemoveBack()
+        {
+            list.InsertFront(1);
+            Assert.Equal(1, list.RemoveBack());
+            Assert.Equal(0, list.Size);
+            list.InsertBack(2);
+            list.InsertBack(3);
+            Assert.Equal(3, list.RemoveBack());
+            Assert.Equal(1, list.Size);
+        }
+
+        [Fact]
+        public void TestRemoveAtOutOfBounds()
+        {
+            list.InsertFront(1);
+            Assert.Throws<IndexOutOfRangeException>(() => list.RemoveAt(-2));
+            Assert.Throws<IndexOutOfRangeException>(() => list.RemoveAt(1));
+        }
+
+        [Fact]
+        public void TestRemoveAt()
+        {
+            list.InsertFront(1);
+            Assert.Equal(1, list.RemoveAt(0));
+            Assert.Equal(0, list.Size);
+            list.InsertBack(2);
+            list.InsertBack(3);
+            Assert.Equal(3, list.RemoveAt(1));
+            list.InsertBack(4);
+            list.InsertBack(5);
+            Assert.Equal(4, list.RemoveAt(1));
+            Assert.Equal(2, list.Size);
+        }
+
+        [Fact]
+        public void TestContains()
+        {
+            Assert.False(list.Contains(4));
+            list.InsertBack(1);
+            Assert.True(list.Contains(1));
+            list.InsertBack(2);
+            list.InsertBack(3);
+            list.InsertBack(4);
+            list.InsertBack(5);
+            Assert.True(list.Contains(4));
+        }
+
+        [Fact]
+        public void TestStringContains()
+        {
+            var strList = new ArrayList<string>();
+            Assert.False(strList.Contains("test"));
+            strList.InsertBack("word");
+            strList.InsertBack("test");
+            Assert.True(strList.Contains("test"));
         }
 
         private void buildBigOrderedList(string side)
