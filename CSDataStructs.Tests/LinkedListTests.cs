@@ -4,7 +4,7 @@ using CSDataStructs.Code;
 
 namespace CSDataStructs.Tests
 {
-    class LinkedListTests
+    public class LinkedListTests
     {
         private readonly LinkedList<int> list;
         Random rng;
