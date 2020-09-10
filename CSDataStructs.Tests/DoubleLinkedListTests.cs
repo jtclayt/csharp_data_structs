@@ -42,10 +42,10 @@ namespace CSDataStructs.Tests
         {
             list.InsertFront(1);
             Assert.Equal(1, list.Size);
-            Assert.Equal("1 -> ", list.ToString());
+            Assert.Equal("<- 1 ->", list.ToString());
             list.InsertFront(2);
             Assert.Equal(2, list.Size);
-            Assert.Equal("2 -> 1 -> ", list.ToString());
+            Assert.Equal("<- 2 <-> 1 ->", list.ToString());
         }
 
         [Fact]
@@ -60,10 +60,10 @@ namespace CSDataStructs.Tests
         {
             list.InsertBack(1);
             Assert.Equal(1, list.Size);
-            Assert.Equal("1 -> ", list.ToString());
+            Assert.Equal("<- 1 ->", list.ToString());
             list.InsertBack(2);
             Assert.Equal(2, list.Size);
-            Assert.Equal("1 -> 2 -> ", list.ToString());
+            Assert.Equal("<- 1 <-> 2 ->", list.ToString());
         }
 
         [Fact]
