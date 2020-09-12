@@ -71,6 +71,12 @@ namespace CSDataStructs.Tests
     }
 
     [Fact]
+    public void TestDequeueEmpty()
+    {
+      Assert.Throws<IndexOutOfRangeException>(() => queue.Dequeue());
+    }
+
+    [Fact]
     public void TestPeek()
     {
       queue.Enqueue(1);
@@ -84,6 +90,12 @@ namespace CSDataStructs.Tests
       Assert.Equal(3, queue.Peek());
       queue.Dequeue();
       Assert.Equal(4, queue.Peek());
+    }
+
+    [Fact]
+    public void TestPeekEmpty()
+    {
+      Assert.Throws<IndexOutOfRangeException>(() => queue.Peek());
     }
   }
 }

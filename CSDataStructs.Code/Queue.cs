@@ -40,17 +40,46 @@ namespace CSDataStructs.Code
 
     public void Enqueue(T item)
     {
-      throw new NotImplementedException();
+      if (_size == 0)
+      {
+        _head = new Node(item);
+        _tail = _head;
+      }
+      else
+      {
+        _tail.Next = new Node(item);
+        _tail = _tail.Next;
+      }
+      _size++;
     }
 
     public T Dequeue()
     {
-      throw new NotImplementedException();
+      if (_size == 0)
+      {
+        throw new IndexOutOfRangeException("Queue is empty");
+      }
+
+      T temp = _head.Value;
+      _head = _head.Next;
+      _size--;
+
+      if (_size == 0)
+      {
+        _tail = null;
+      }
+
+      return temp;
     }
 
     public T Peek()
     {
-      throw new NotImplementedException();
+      if (_size == 0)
+      {
+        throw new IndexOutOfRangeException("Queue is empty");
+      }
+
+      return _head.Value;
     }
   }
 }
