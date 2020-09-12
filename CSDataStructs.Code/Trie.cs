@@ -51,5 +51,10 @@ namespace CSDataStructs.Code
         {
             throw new NotImplementedException();
         }
+
+        public string[] Autocomplete(string prefix)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
