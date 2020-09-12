@@ -50,7 +50,7 @@ namespace CSDataStructs.Code
             {
                 throw new IndexOutOfRangeException("Stack is empty");
             }
-            else if (_size < (_maxSize / 4))
+            else if (_size < (_maxSize / 4) && _size > 8)
             {
                 resize(_maxSize / 2);
             }
