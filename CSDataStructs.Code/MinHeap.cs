@@ -1,6 +1,6 @@
 using System;
 
-namespace CSDataStructs
+namespace CSDataStructs.Code
 {
     public class MinIntHeap
     {
