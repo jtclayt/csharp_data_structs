@@ -4,7 +4,7 @@ namespace CSDataStructs.Code
 {
     public class MinIntHeap
     {
-        private int[] _heap;
+        private int[] _arr;
         private int _size;
 
         public int Size
@@ -19,23 +19,114 @@ namespace CSDataStructs.Code
 
         public void Clear()
         {
-            _heap = new int[8];
+            _arr = new int[8];
             _size = 0;
         }
 
-        public void insert(int num)
+        public void Insert(int num)
         {
-            throw new NotImplementedException();
+            checkCapacity();
+            _arr[_size] = num;
+            bubbleUp();
+            _size++;
         }
 
-        public int peekMin()
+        public int PeekMin()
         {
-            throw new NotImplementedException();
+            if (_size == 0)
+            {
+                throw new IndexOutOfRangeException("Heap is empty");
+            }
+            return _arr[0];
         }
 
-        public int getMin()
+        public int GetMin()
         {
-            throw new NotImplementedException();
+            if (_size == 0)
+            {
+                throw new IndexOutOfRangeException("Heap is empty");
+            }
+            int temp = _arr[0];
+            _size--;
+            _arr[0] = _arr[_size];
+            sinkDown();
+            checkCapacity();
+            return temp;
+        }
+
+        private void checkCapacity()
+        {
+            if (_size >= _arr.Length / 2)
+            {
+                resize(_arr.Length * 2);
+            }
+            else if (_size < _arr.Length / 4 && _size > 8)
+            {
+                resize(_arr.Length / 2);
+            }
+        }
+
+        private void resize(int newMax)
+        {
+            int[] newArr = new int[newMax];
+            for (int i = 0; i < _size; i++)
+            {
+                newArr[i] = _arr[i];
+            }
+            _arr = newArr;
+        }
+
+        private void bubbleUp()
+        {
+            int currIndex = _size;
+            while (_arr[parent(currIndex)] > _arr[currIndex])
+            {
+                swap(parent(currIndex), currIndex);
+                currIndex = parent(currIndex);
+            }
+        }
+
+        private void sinkDown(int currIndex = 0)
+        {
+            int leftIdx = leftChild(currIndex);
+            int rightIdx = rightChild(currIndex);
+            int minIdx = -1;
+            if (rightIdx < _size && _arr[rightIdx] < _arr[leftIdx])
+            {
+                minIdx = rightIdx;
+            }
+            else if (leftIdx < _size)
+            {
+                minIdx = leftIdx;
+            }
+
+            if (minIdx != -1 && _arr[currIndex] > _arr[minIdx])
+            {
+                swap(currIndex, minIdx);
+                sinkDown(minIdx);
+            }
+        }
+
+        public void swap(int idx1, int idx2)
+        {
+            int temp = _arr[idx1];
+            _arr[idx1] = _arr[idx2];
+            _arr[idx2] = temp;
+        }
+
+        private int parent(int index)
+        {
+            return (index - 1) / 2;
+        }
+
+        private int leftChild(int index)
+        {
+            return 2 * (index + 1) - 1;
+        }
+
+        private int rightChild(int index)
+        {
+            return 2 * (index + 1);
         }
     }
 }
