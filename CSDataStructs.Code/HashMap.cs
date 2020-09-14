@@ -70,27 +70,5 @@ namespace CSDataStructs.Code
         {
             throw new NotImplementedException();
         }
-
-        private int getDoublePrime(int currentPrime)
-        {
-            int nextPrime = 2 * currentPrime;
-            while (isNotPrime(nextPrime))
-            {
-                nextPrime++;
-            }
-            return nextPrime;
-        }
-
-        private bool isNotPrime(int num)
-        {
-            for (int i = 2; i < Math.Floor(Math.Sqrt(num)); i++)
-            {
-                if (num / i == 0)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
     }
 }
