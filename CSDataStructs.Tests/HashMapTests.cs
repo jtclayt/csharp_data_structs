@@ -53,6 +53,14 @@ namespace CSDataStructs.Tests
         }
 
         [Fact]
+        public void TestRemoveInvalid()
+        {
+            Assert.Throws<ArgumentException>(() => map.Remove("k1"));
+            map.Insert("k1", "v1");
+            Assert.Throws<ArgumentException>(() => map.Remove("k2"));
+        }
+
+        [Fact]
         public void TestInsertAndGet()
         {
             map.Insert("k1", "v1");
@@ -61,6 +69,14 @@ namespace CSDataStructs.Tests
             map.Insert("k1", "v2");
             Assert.Equal("v2", map.Get("k1"));
             Assert.Equal(1, map.Size);
+        }
+
+        [Fact]
+        public void TestGetInvalid()
+        {
+            Assert.Throws<ArgumentException>(() => map.Get("k1"));
+            map.Insert("k1", "v1");
+            Assert.Throws<ArgumentException>(() => map.Get("k2"));
         }
 
         [Fact]
