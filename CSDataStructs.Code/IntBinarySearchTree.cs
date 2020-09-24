@@ -12,6 +12,20 @@ namespace CSDataStructs.Code
             get { return _size; }
         }
 
+        private class Node
+        {
+            public int Value;
+            public Node Left;
+            public Node Right;
+
+            public Node(int v)
+            {
+                Value = v;
+                Left = null;
+                Right = null;
+            }
+        }
+
         public IntBinarySearchTree()
         {
             Clear();

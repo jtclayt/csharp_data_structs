@@ -119,6 +119,7 @@ namespace CSDataStructs.Code
         public void Remove(K key)
         {
             int index = getIndex(key);
+            bool notFound = true;
 
             if (_arr[index] != null)
             {
@@ -126,23 +127,26 @@ namespace CSDataStructs.Code
 
                 if (curr != null && curr.Key.Equals(key))
                 {
+                    notFound = false;
                     _arr[index] = curr.Next;
                     _size--;
                 }
                 else
                 {
-                    while (curr.Next != null || !curr.Next.Key.Equals(key))
+                    while (curr.Next != null && !curr.Next.Key.Equals(key))
                     {
                         curr = curr.Next;
                     }
                     if (curr.Next != null)
                     {
+                        notFound = false;
                         curr.Next = curr.Next.Next;
                         _size--;
                     }
                 }
             }
-            else
+
+            if (notFound)
             {
                 throw new ArgumentException("Key is not in the map");
             }
