@@ -28,6 +28,7 @@ bin/
 obj/
 TestResults/
 .vscode/
+.vs/
 
 ###################
 # Web publish log #

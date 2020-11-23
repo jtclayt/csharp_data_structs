@@ -35,11 +35,28 @@ namespace CSDataStructs.Tests
         }
 
         [Fact]
+        public void TestToString()
+        {
+            Assert.Equal("", bst.ToString());
+            bst.Insert(5);
+            bst.Insert(9);
+            bst.Insert(2);
+            bst.Insert(1);
+            Assert.Equal("1 2 5 9 ", bst.ToString());
+        }
+
+        [Fact]
         public void TestInsert()
         {
             bst.Insert(5);
-            Assert.Equal(1, bst.Size);
+            bst.Insert(9);
+            bst.Insert(2);
+            bst.Insert(1);
+            Assert.Equal(4, bst.Size);
             Assert.True(bst.Contains(5));
+            Assert.True(bst.Contains(9));
+            Assert.True(bst.Contains(2));
+            Assert.True(bst.Contains(1));
         }
 
         [Fact]
