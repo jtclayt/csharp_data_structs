@@ -1,7 +1,7 @@
-using System;
-
 namespace CSDataStructs.Code
 {
+    using System;
+
     public class Trie
     {
         private Node _root;
@@ -31,6 +31,7 @@ namespace CSDataStructs.Code
             Clear();
         }
 
+        #region Public Methods
         public void Clear()
         {
             _root = new Node('/');
@@ -56,5 +57,6 @@ namespace CSDataStructs.Code
         {
             throw new NotImplementedException();
         }
+        #endregion
     }
 }

@@ -1,7 +1,7 @@
-using System;
-
 namespace CSDataStructs.Code
 {
+    using System;
+
     public class MinIntHeap
     {
         private int[] _arr;
@@ -17,6 +17,7 @@ namespace CSDataStructs.Code
             Clear();
         }
 
+        #region Public Methods
         public void Clear()
         {
             _arr = new int[8];
@@ -53,7 +54,9 @@ namespace CSDataStructs.Code
             checkCapacity();
             return temp;
         }
+        #endregion
 
+        #region Private Methods
         private void checkCapacity()
         {
             if (_size >= _arr.Length / 2)
@@ -107,7 +110,7 @@ namespace CSDataStructs.Code
             }
         }
 
-        public void swap(int idx1, int idx2)
+        private void swap(int idx1, int idx2)
         {
             int temp = _arr[idx1];
             _arr[idx1] = _arr[idx2];
@@ -128,5 +131,6 @@ namespace CSDataStructs.Code
         {
             return 2 * (index + 1);
         }
+        #endregion
     }
 }

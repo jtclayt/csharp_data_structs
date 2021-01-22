@@ -1,8 +1,7 @@
-using System;
-using System.Text;
-
 namespace CSDataStructs.Code
 {
+    using System.Text;
+
     public class IntBinarySearchTree
     {
         private Node _root;
@@ -32,6 +31,7 @@ namespace CSDataStructs.Code
             Clear();
         }
 
+        #region Public Methods
         public void Clear()
         {
             _root = null;
@@ -88,7 +88,9 @@ namespace CSDataStructs.Code
             }
             return sb.ToString();
         }
+        #endregion
 
+        #region Private Methods
         private void inOrderTraverse(Node curr, StringBuilder sb)
         {
             if (curr.Left != null)
@@ -194,5 +196,6 @@ namespace CSDataStructs.Code
             }
             return curr;
         }
+        #endregion
     }
 }

@@ -1,8 +1,8 @@
-using System;
-using System.Text;
-
 namespace CSDataStructs.Code
 {
+    using System;
+    using System.Text;
+
     public class LinkedList<T>
     {
         int _size;
@@ -31,6 +31,7 @@ namespace CSDataStructs.Code
             Clear();
         }
 
+        #region Public Methods
         public void Clear()
         {
             _size = 0;
@@ -174,7 +175,9 @@ namespace CSDataStructs.Code
 
             return sb.ToString();
         }
+        #endregion
 
+        #region Private Methods
         private Node iterate(int index)
         {
             Node curr = _head;
@@ -185,5 +188,6 @@ namespace CSDataStructs.Code
             }
             return curr;
         }
+        #endregion
     }
 }

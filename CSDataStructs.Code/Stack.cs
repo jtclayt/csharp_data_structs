@@ -1,7 +1,7 @@
-using System;
-
 namespace CSDataStructs.Code
 {
+    using System;
+
     public class Stack<T>
     {
         private int _size;
@@ -18,6 +18,7 @@ namespace CSDataStructs.Code
             Clear();
         }
 
+        #region Public Methods
         public void Clear()
         {
             _size = 0;
@@ -57,7 +58,9 @@ namespace CSDataStructs.Code
             _size--;
             return _arr[_size];
         }
+        #endregion
 
+        #region Private Methods
         private void resize(int newMax)
         {
             T[] newArr = new T[newMax];
@@ -68,5 +71,6 @@ namespace CSDataStructs.Code
             _maxSize = newMax;
             _arr = newArr;
         }
+        #endregion
     }
 }

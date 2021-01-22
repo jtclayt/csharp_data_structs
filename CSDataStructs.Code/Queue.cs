@@ -1,7 +1,7 @@
-using System;
-
 namespace CSDataStructs.Code
 {
+    using System;
+
     public class Queue<T>
     {
         int _size;
@@ -30,6 +30,7 @@ namespace CSDataStructs.Code
             Clear();
         }
 
+        #region Public Methods
         public void Clear()
         {
             _size = 0;
@@ -80,5 +81,6 @@ namespace CSDataStructs.Code
 
             return _head.Value;
         }
+        #endregion
     }
 }
